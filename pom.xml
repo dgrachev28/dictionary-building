@@ -118,7 +118,7 @@
     </dependencies>
 
     <build>
-        <finalName>CarService</finalName>
+        <finalName>DictionaryBuilding</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
