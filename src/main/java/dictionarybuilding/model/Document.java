@@ -1,6 +1,7 @@
 package dictionarybuilding.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
@@ -8,16 +9,17 @@ import javax.persistence.Lob;
 public class Document {
 
     @Id
-    private int id;
+    @GeneratedValue
+    private Long id;
 
     @Lob
     private String content;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -9,22 +9,16 @@ import java.io.InputStreamReader;
 @Service
 public class MystemService {
 
-    private String resourcesFolder;
-    private String mystemPath;
-
-
-    public void run(String realPath) {
-        this.resourcesFolder = realPath + "/WEB-INF/classes/file/";
-        this.mystemPath = realPath + "/WEB-INF/classes/lib/mystem/mystem.exe";
-        runMystem("input.txt", "output.xml");
+    public void run() {
+        runMystem("input.txt", "mystem_out.xml");
     }
 
     private void runMystem(String inFileName, String outFileName) {
         try {
-            String inFile = resourcesFolder + inFileName;
-            String outFile = resourcesFolder + outFileName;
+            String inFile = RealPathService.resourcesFolder + inFileName;
+            String outFile = RealPathService.resourcesFolder + outFileName;
             ProcessBuilder procBuilder = new ProcessBuilder(
-                    mystemPath, "-ni", "--format", "xml", "--eng-gr", inFile, outFile);
+                    RealPathService.mystemPath, "-nic", "--format", "xml", "--eng-gr", inFile, outFile);
             procBuilder.redirectErrorStream(true);
 
 

@@ -18,10 +18,9 @@ $(document).ready(function () {
         $topPanelButton.on("click", topPanelButtonClickHandler);
     }
 
-
     function topPanelButtonClickHandler() {
 
-        $.ajax({
+        ajax({
             method: 'GET',
             url: '/findEntrance',
             data: {verb: $topPanelText.val()},
@@ -38,6 +37,20 @@ $(document).ready(function () {
 
     }
 
+
+
+    function ajax(config) {
+        var successFn = config.success;
+        config.success = function (response) {
+            if (response.success) {
+                successFn.call(this, response.data);
+            } else {
+                alert("Error: " + response.errorMsg);
+            }
+        };
+
+        $.ajax(config);
+    }
 
     // Начало работы
     init();
