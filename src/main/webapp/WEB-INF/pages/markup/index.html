@@ -3,26 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <title>Dictionary Building</title>
-
-    <link href='https://fonts.googleapis.com/css?family=Exo+2:400,400italic,500,600,500italic,700,700italic,600italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="../styles/reset.css"/>
-    <link rel="stylesheet" href="../styles/top-panel.css"/>
-
-    <script src="../scripts/jquery.js"></script>
-    <script src="../scripts/ajax.js"></script>
+    <link rel="stylesheet" href="../styles/main.css">
+    <script src="../scripts/libs/jquery.js"></script>
+    <script src="../scripts/libs/select2.full.min.js"></script>
+    <script src="../scripts/select.js"></script>
     <script src="../scripts/main.js"></script>
 </head>
 <body>
-
 <div class="page">
-    <div class="top-panel">
-        <div class="top-panel__enter">
-            <input type="text" class="top-panel__enter__text" />
-            <button class="top-panel__enter__button" >Найти вхождение</button>
+
+    <!--Секция поиска-->
+    <section class="search-section">
+        <div class="page__wrapper">
+            <input type="text" placeholder="Введите глагол" class="search-section__input">
+            <button class="search-section__button">Найти вхождение</button>
         </div>
-    </div>
-    <div class="content">
-    </div>
+    </section>
+
+
+
+    <!--Секция информации о глаголе-->
+    <section class="verb-info-section">
+        <div class="page__wrapper">
+            <div class="verb-info-section__verb">брать</div>
+            <div class="verb-info-section__dictionary-record">БРАТЬ [глагол]</div>
+        </div>
+    </section>
+
+
+
+    <!--Секция предложения-->
+    <section class="sentence-section">
+        <div class="page__wrapper">
+
+            <!--Предложение-->
+            <div class="sentence-section__sentence">
+                <span class="sentence-section__word">Заходя</span>
+                <span class="sentence-section__word">в</span>
+                <span class="sentence-section__word">лифт</span>,
+                <span class="sentence-section__word sentence-section__word_main-verb">берите</span>
+                <span class="sentence-section__word">за</span>
+                <span class="sentence-section__word">руку</span>
+                <span class="sentence-section__word">ребенка</span>.
+            </div>
+
+            <div class="sentence-section__select-button-container">
+                <button class="sentence-section__select-button">выделить словосочетание</button>
+            </div>
+
+
+            <!--Описание выделенных слов-->
+            <div class="words-description-section">
+
+                <div class="words-description-section__item">
+                    <div class="words-description-section__title">брать</div>
+                    <div class="words-description-section__list">
+
+                        <div class="words-description-section__list-item">
+                            <div class="words-description-section__label">Переходность</div>
+                            <select name="" class="words-description-section__select jsSelect">
+                                <option value="п" selected>переходный (п)</option>
+                                <option value="нп">непереходный (нп)</option>
+                                <option value="п/нп">смешанный (п/нп)</option>
+                            </select>
+                        </div>
+
+                        <div class="words-description-section__list-item">
+                            <div class="words-description-section__label">Вид</div>
+                            <select name="" class="words-description-section__select jsSelect">
+                                <option value="">совершенный (св)</option>
+                                <option selected>несовершенный (нсв)</option>
+                                <option value="">смешанный (св/нсв)</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="words-description-section__item">
+                    <div class="words-description-section__title">за руку</div>
+                    <div class="words-description-section__list">
+                        <div class="words-description-section__list-item">
+                            <div class="words-description-section__label">Падеж</div>
+                            <select name="" class="words-description-section__select jsSelect">
+                                <option value="" selected>именительный</option>
+                                <option value="">родительный</option>
+                                <option value="">дательный</option>
+                                <option value="">винительный</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="sentence-section__buttons">
+                <button class="sentence-section__add-button">Добавить в словарь</button>
+                <button class="sentence-section__add-button">Следующее вхождение</button>
+            </div>
+        </div>
+    </section>
 </div>
 </body>
 </html>

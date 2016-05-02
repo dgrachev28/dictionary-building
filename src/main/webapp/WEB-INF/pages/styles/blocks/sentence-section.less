@@ -1,0 +1,45 @@
+/* Sentence-section styles */
+.sentence-section {
+    margin: 50px;
+
+    &__sentence {
+        margin-bottom: 20px;
+    }
+
+    &__word {
+        font-size: 20px;
+        line-height: 40px;
+        padding: 0 5px;
+        cursor: pointer;
+
+        &_main-verb {
+            color: #e50000;
+            font-weight: 700;
+        }
+    }
+
+
+    &__select-button {
+
+        &-container {
+            text-align: right;
+        }
+    }
+
+
+
+    &__buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 50px;
+    }
+
+
+
+    &__add-button {
+        & + & {
+            margin-left: 20px;
+        }
+    }
+
+}

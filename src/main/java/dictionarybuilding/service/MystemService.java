@@ -18,7 +18,7 @@ public class MystemService {
             String inFile = RealPathService.resourcesFolder + inFileName;
             String outFile = RealPathService.resourcesFolder + outFileName;
             ProcessBuilder procBuilder = new ProcessBuilder(
-                    RealPathService.mystemPath, "-nic", "--format", "xml", "--eng-gr", inFile, outFile);
+                    RealPathService.mystemPath, "-nic", "--weight", "--format", "xml", "--eng-gr", inFile, outFile);
             procBuilder.redirectErrorStream(true);
 
 

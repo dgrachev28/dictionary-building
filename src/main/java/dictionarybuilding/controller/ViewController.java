@@ -1,19 +1,16 @@
 package dictionarybuilding.controller;
 
-import dictionarybuilding.dao.DocumentDao;
-import dictionarybuilding.model.VerbUse;
 import dictionarybuilding.service.AddDocumentService;
 import dictionarybuilding.service.MystemService;
 import dictionarybuilding.service.RealPathService;
 import dictionarybuilding.service.VerbEntranceService;
 import dictionarybuilding.web.Response;
-import dictionarybuilding.web.VerbDescription;
+import dictionarybuilding.web.model.EmptyResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @RestController
@@ -32,14 +29,22 @@ public class ViewController {
     @RequestMapping(value = "/findEntrance")
     public Response findEntrance(@RequestParam String verb, HttpSession session) {
         RealPathService.setPaths(session.getServletContext().getRealPath(""));
-        mystemService.run();
-        addDocumentService.test();
-        VerbUse result = verbEntranceService.getNextVerbEntrance(verb);
-        VerbDescription verbDescription = new VerbDescription();
-        verbDescription.setVerb(result.getVerb());
-        verbDescription.setSentence(result.getSentence().getText());
-        System.out.println(result.getSentence().getText());
-        return verbDescription;
+        return verbEntranceService.getNextVerbEntrance(verb);
     }
+
+    @RequestMapping(value = "/addDocument")
+    public Response addDocument(HttpSession session) {
+        RealPathService.setPaths(session.getServletContext().getRealPath(""));
+        mystemService.run();
+        addDocumentService.addDocument();
+        return new EmptyResponse();
+    }
+
+    @RequestMapping(value = "/clearVerbs")
+    public Response clearVerbs() {
+        addDocumentService.clearVerbs();
+        return new EmptyResponse();
+    }
+
 
 }

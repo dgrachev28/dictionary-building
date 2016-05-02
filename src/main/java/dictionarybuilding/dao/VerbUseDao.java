@@ -25,10 +25,16 @@ public class VerbUseDao {
                 "select v from VerbUse v where v.verb = :verb and v.used = false"
         );
         query.setParameter("verb", verb);
-        VerbUse verbUse = (VerbUse) query.getSingleResult();
+        query.setFirstResult(0);
+        query.setMaxResults(1);
+        VerbUse verbUse = (VerbUse) query.getResultList().get(0);
         verbUse.setUsed(true);
         entityManager.persist(verbUse);
         return verbUse;
+    }
+
+    public void setAllVerbsUnused() {
+        entityManager.createQuery("update VerbUse v set used = false").executeUpdate();
     }
 
 }
